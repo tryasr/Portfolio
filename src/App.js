@@ -80,6 +80,7 @@ export default function Portfolio() {
       setFeaturedIdx((prev) => (prev + 1) % totalProjects);
     }, 2500);
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered]);
 
   const openLightbox = (images, idx = 0) => setLightbox({ images, idx });
