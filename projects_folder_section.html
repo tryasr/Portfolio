@@ -1,0 +1,268 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{background:#1A72F5;padding:48px 32px 56px;font-family:'DM Sans',sans-serif;min-height:420px;position:relative}
+.sec-header{text-align:center;margin-bottom:40px}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:6px}
+.sec-title{font-family:'Instrument Serif',serif;font-size:38px;font-style:italic;color:#C8F135;line-height:1}
+.grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.folder{width:140px;cursor:pointer;text-align:center;flex-shrink:0}
+.folder-body{width:140px;height:130px;border-radius:18px;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:14px;transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
+.folder:hover .folder-body{transform:translateY(-8px) scale(1.04)}
+.folder-tab{position:absolute;top:-11px;left:14px;width:50px;height:14px;border-radius:6px 6px 0 0}
+.folder-emoji{font-size:52px;position:absolute;top:-28px;left:50%;transform:translateX(-50%);filter:drop-shadow(0 4px 8px rgba(0,0,0,0.18))}
+.folder-name{font-size:13px;font-weight:800;color:#fff;margin-top:10px;line-height:1.3;letter-spacing:.2px}
+
+.overlay{display:none;position:absolute;inset:0;background:rgba(10,30,80,0.72);z-index:10;align-items:center;justify-content:center;border-radius:0}
+.overlay.open{display:flex}
+.popup{background:#fff;border-radius:20px;width:500px;max-width:94%;overflow:hidden;position:relative}
+.popup-header{height:200px;display:flex;align-items:center;justify-content:center;position:relative;font-size:88px}
+.popup-tab-tag{position:absolute;top:14px;left:14px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:99px;color:#fff}
+.popup-body{padding:22px 24px 24px}
+.popup-proj-title{font-family:'Instrument Serif',serif;font-size:24px;color:#1A1A2E;font-style:italic;margin-bottom:4px}
+.popup-role{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#4A7C59;margin-bottom:12px}
+.popup-desc{font-size:13px;color:#4A4A6A;line-height:1.7;margin-bottom:16px}
+.popup-pills{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.pill{font-size:11px;font-weight:700;padding:4px 12px;border-radius:99px;background:#F3EDE5;color:#1A1A2E}
+.popup-result{font-size:12px;font-weight:700;color:#4A7C59;background:#EBF5E0;padding:8px 14px;border-radius:8px;margin-bottom:18px}
+.popup-close{position:absolute;top:12px;right:14px;width:30px;height:30px;background:rgba(0,0,0,0.15);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700}
+.popup-btns{display:flex;gap:10px}
+.btn-primary{background:#1E3A5F;color:#fff;border:none;padding:10px 22px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-sec{background:#F3EDE5;color:#1A1A2E;border:none;padding:10px 22px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+.popup-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mock-screen{border-radius:10px;overflow:hidden;height:90px;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative}
+.mock-bar{position:absolute;top:0;left:0;right:0;height:22px;display:flex;align-items:center;padding:0 8px;gap:4px}
+.mock-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5)}
+.mock-content{font-size:28px;margin-top:14px}
+</style>
+
+<div class="wrap" id="mainwrap">
+  <div class="sec-header">
+    <div class="sec-label">Selected Work</div>
+    <div class="sec-title">Featured Projects.</div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <div class="folder" onclick="open_popup(0)">
+      <div class="folder-body" style="background:#9BC4F8">
+        <div class="folder-tab" style="background:#7BAEE8"></div>
+        <div class="folder-emoji">🌿</div>
+      </div>
+      <div class="folder-name">MindBloom</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(1)">
+      <div class="folder-body" style="background:#A8E6C8">
+        <div class="folder-tab" style="background:#88D4AE"></div>
+        <div class="folder-emoji">📈</div>
+      </div>
+      <div class="folder-name">Reksa</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(2)">
+      <div class="folder-body" style="background:#F5A882">
+        <div class="folder-tab" style="background:#E08A64"></div>
+        <div class="folder-emoji">🛍️</div>
+      </div>
+      <div class="folder-name">Pasar Lokal</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(3)">
+      <div class="folder-body" style="background:#F5D97A">
+        <div class="folder-tab" style="background:#E0C055"></div>
+        <div class="folder-emoji">🎓</div>
+      </div>
+      <div class="folder-name">Kampus Connect</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(4)">
+      <div class="folder-body" style="background:#F5A8C8">
+        <div class="folder-tab" style="background:#E08AAE"></div>
+        <div class="folder-emoji">🏥</div>
+      </div>
+      <div class="folder-name">SehatKu</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(5)">
+      <div class="folder-body" style="background:#B8E0F5">
+        <div class="folder-tab" style="background:#90C8E0"></div>
+        <div class="folder-emoji">✈️</div>
+      </div>
+      <div class="folder-name">Jelajah</div>
+    </div>
+
+    <div class="folder" onclick="open_popup(6)">
+      <div class="folder-body" style="background:#C8F135" style="background:#C8F135">
+        <div class="folder-tab" style="background:#A8D010"></div>
+        <div class="folder-emoji">🍜</div>
+      </div>
+      <div class="folder-name">WarungKu</div>
+    </div>
+
+  </div>
+
+  <div class="overlay" id="overlay" onclick="close_popup(event)">
+    <div class="popup" id="popup" onclick="event.stopPropagation()">
+      <div class="popup-header" id="ph">
+        <div class="mock-bar" id="pb"></div>
+        <div class="mock-content" id="pc"></div>
+        <div class="popup-tab-tag" id="ptag"></div>
+        <button class="popup-close" onclick="close_popup_direct()">✕</button>
+      </div>
+      <div class="popup-body">
+        <div class="popup-proj-title" id="ptitle"></div>
+        <div class="popup-role" id="prole"></div>
+        <div class="popup-desc" id="pdesc"></div>
+        <div class="popup-img-grid" id="pscreens"></div>
+        <div class="popup-result" id="presult"></div>
+        <div class="popup-pills" id="ppills"></div>
+        <div class="popup-btns">
+          <button class="btn-primary">View Case Study →</button>
+          <button class="btn-sec" onclick="close_popup_direct()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const data = [
+  {
+    emoji:"🌿", bg:"#9BC4F8", tag:"Mobile App", tagBg:"#3B82C4",
+    title:"MindBloom — Mental Wellness App",
+    role:"Lead UX Designer",
+    desc:"Users struggled with clinical, overwhelming mental health interfaces. I led a full redesign from research to prototype, creating a calming daily check-in experience.",
+    result:"✦ +42% Daily Active Users · 4.8★ App Store Rating",
+    tools:["Figma","FigJam","Maze","User Research","Prototyping"],
+    screens:[
+      {bg:"#D4EAFF",emoji:"📊",label:"Dashboard"},
+      {bg:"#E7F7F0",emoji:"🧘",label:"Check-in"},
+      {bg:"#EDE7FF",emoji:"📝",label:"Journal"},
+      {bg:"#FFF0E7",emoji:"📆",label:"Tracker"}
+    ]
+  },
+  {
+    emoji:"📈", bg:"#A8E6C8", tag:"Web App", tagBg:"#2E7D5E",
+    title:"Reksa — Investment Dashboard",
+    role:"UX/UI Designer",
+    desc:"First-time investors felt intimidated by dense financial data. Redesigned onboarding and the main dashboard to make investing feel approachable and clear.",
+    result:"✦ -67% Drop-off Rate · Campus Incubator Funded",
+    tools:["Figma","Principle","Miro","Information Architecture"],
+    screens:[
+      {bg:"#D4F0E4",emoji:"💹",label:"Portfolio"},
+      {bg:"#FFF9D4",emoji:"📋",label:"Onboarding"},
+      {bg:"#E7EDFF",emoji:"🔔",label:"Alerts"},
+      {bg:"#FFE7E7",emoji:"📉",label:"Analytics"}
+    ]
+  },
+  {
+    emoji:"🛍️", bg:"#F5A882", tag:"E-Commerce", tagBg:"#C05E30",
+    title:"Pasar Lokal — UMKM Marketplace",
+    role:"Product Designer",
+    desc:"Local Indonesian vendors lacked dignified, easy-to-navigate digital storefronts. Built end-to-end marketplace experience emphasizing trust and local identity.",
+    result:"🥇 1st Place — National UI/UX Competition 2024",
+    tools:["Figma","Canva","Adobe Illustrator","UX Research"],
+    screens:[
+      {bg:"#FFE8D4",emoji:"🏪",label:"Store"},
+      {bg:"#D4F0D4",emoji:"🛒",label:"Cart"},
+      {bg:"#E7E7FF",emoji:"💬",label:"Chat"},
+      {bg:"#FFF0D4",emoji:"⭐",label:"Reviews"}
+    ]
+  },
+  {
+    emoji:"🎓", bg:"#F5D97A", tag:"Web Platform", tagBg:"#9A7A10",
+    title:"Kampus Connect — Campus Portal",
+    role:"UX Researcher + Designer",
+    desc:"Students navigated 5+ fragmented systems for academic needs. Consolidated into a single unified portal with clear information architecture.",
+    result:"✦ Task Completion Time -55% · Student Project Grant",
+    tools:["Figma","FigJam","Notion","Miro","Usability Testing"],
+    screens:[
+      {bg:"#FFF3D4",emoji:"🗂️",label:"Classes"},
+      {bg:"#D4EAF5",emoji:"📅",label:"Schedule"},
+      {bg:"#E7FFD4",emoji:"📄",label:"Docs"},
+      {bg:"#F5D4FF",emoji:"💳",label:"Finance"}
+    ]
+  },
+  {
+    emoji:"🏥", bg:"#F5A8C8", tag:"Healthcare", tagBg:"#A8305E",
+    title:"SehatKu — Telemedicine App",
+    role:"UI/UX Designer (Freelance)",
+    desc:"Patients struggled with confusing doctor-booking flows. Simplified the end-to-end experience from doctor discovery to post-consultation follow-up.",
+    result:"✦ Booking Completion +38% · 3-week Sprint",
+    tools:["Figma","Maze","User Interviews"],
+    screens:[
+      {bg:"#FFD4EA",emoji:"👨‍⚕️",label:"Doctors"},
+      {bg:"#D4EEFF",emoji:"📞",label:"Consult"},
+      {bg:"#D4FFE7",emoji:"💊",label:"Prescription"},
+      {bg:"#FFF5D4",emoji:"📋",label:"History"}
+    ]
+  },
+  {
+    emoji:"✈️", bg:"#B8E0F5", tag:"Travel", tagBg:"#2266A0",
+    title:"Jelajah — Travel Planner",
+    role:"UI/UX Designer (Freelance)",
+    desc:"Travelers wasted time switching between 4-5 apps to plan a trip. Designed an itinerary-first experience where planning feels like building a scrapbook.",
+    result:"✦ Planning Time -60% · 4.7★ Beta Feedback",
+    tools:["Figma","FigJam","Hotjar"],
+    screens:[
+      {bg:"#D4EEFF",emoji:"🗺️",label:"Map"},
+      {bg:"#D4FFD4",emoji:"🏨",label:"Hotel"},
+      {bg:"#FFD4D4",emoji:"🍽️",label:"Food"},
+      {bg:"#EDD4FF",emoji:"📸",label:"Memories"}
+    ]
+  },
+  {
+    emoji:"🍜", bg:"#C8F135", tag:"F&B · SaaS", tagBg:"#6A8A00",
+    title:"WarungKu — Warung POS System",
+    role:"Product Designer",
+    desc:"Small warung owners needed an affordable, easy POS system in Indonesian. Designed for low-tech users with large touch targets and offline-first flow.",
+    result:"✦ Onboarding Time -50% · Pilot: 12 Warung owners",
+    tools:["Figma","Notion","User Research","Accessibility"],
+    screens:[
+      {bg:"#F0FFB0",emoji:"🧾",label:"Order"},
+      {bg:"#FFE7B0",emoji:"💰",label:"Payment"},
+      {bg:"#B0F0E0",emoji:"📦",label:"Inventory"},
+      {bg:"#B0D8FF",emoji:"📊",label:"Report"}
+    ]
+  }
+];
+
+function open_popup(i){
+  const d = data[i];
+  const ph = document.getElementById('ph');
+  ph.style.background = d.bg;
+  document.getElementById('pc').textContent = d.emoji;
+  const pb = document.getElementById('pb');
+  pb.style.background = 'rgba(0,0,0,0.12)';
+  pb.innerHTML = '<div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>';
+  const ptag = document.getElementById('ptag');
+  ptag.textContent = d.tag;
+  ptag.style.background = d.tagBg;
+  document.getElementById('ptitle').textContent = d.title;
+  document.getElementById('prole').textContent = d.role;
+  document.getElementById('pdesc').textContent = d.desc;
+  document.getElementById('presult').textContent = d.result;
+  const pills = document.getElementById('ppills');
+  pills.innerHTML = d.tools.map(t=>`<span class="pill">${t}</span>`).join('');
+  const screens = document.getElementById('pscreens');
+  screens.innerHTML = d.screens.map(s=>`
+    <div class="mock-screen" style="background:${s.bg}">
+      <div style="font-size:9px;font-weight:700;position:absolute;bottom:8px;left:0;right:0;text-align:center;color:rgba(0,0,0,0.45);letter-spacing:1px;text-transform:uppercase">${s.label}</div>
+      <div style="font-size:30px;margin-bottom:8px">${s.emoji}</div>
+    </div>`).join('');
+  document.getElementById('overlay').classList.add('open');
+}
+
+function close_popup(e){
+  if(e.target === document.getElementById('overlay')){
+    document.getElementById('overlay').classList.remove('open');
+  }
+}
+
+function close_popup_direct(){
+  document.getElementById('overlay').classList.remove('open');
+}
+</script>
