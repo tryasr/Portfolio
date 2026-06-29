@@ -109,7 +109,7 @@ export default function Portfolio() {
         .nav-links{display:flex;gap:20px}
         .nav-links a{color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:color .2s}
         .nav-links a:hover{color:#C8F135}
-        .nav-tag{background:#C8F135;color:#1E3A5F;font-size:10px;font-weight:700;padding:4px 10px;border-radius:99px;letter-spacing:1px;cursor:pointer}
+        .nav-tag{background:#C8F135;color:#1E3A5F;font-size:10px;font-weight:700;padding:4px 10px;border-radius:99px;letter-spacing:1px;pointer-events:none;opacity:0.98}
 
         .hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;position:relative;overflow:hidden}
         .hero-left{background:#C8F135;padding:50px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
@@ -389,7 +389,6 @@ export default function Portfolio() {
             <div className="sticky sticky-pink" style={{ position: "absolute", bottom: 80, left: 28, fontSize: 10, maxWidth: 90, transform: "rotate(4deg)" }}>
               Computer Engineering
             </div>
-            <p className="hero-desc" style={{ marginTop: 24, textAlign: "center" }}>UI/UX Designer & Product Design Enthusiast</p>
           </div>
         </div>
       </div>
